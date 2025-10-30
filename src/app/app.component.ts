@@ -1,12 +1,32 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HeroComponent } from './hero/hero.component';
+import { QuoteModalComponent } from './quote-modal/quote-modal.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [HeroComponent, QuoteModalComponent], // ✅ Import the child component here
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'jet2mauritius';
+  quoteOpen = false;
+
+  constructor(){
+    document.addEventListener('open-quote', () => {
+      this.quoteOpen = true;
+    });
+  }
+
+  openQuote(){
+    this.quoteOpen = true;
+  }
+
+  onQuoteSubmitted(data: any){
+    console.log('Quote submitted', data);
+    this.quoteOpen = false;
+    // show a toast or confirmation as next step
+    alert('Your quote request has been submitted. We will contact you shortly.');
+  }
 }

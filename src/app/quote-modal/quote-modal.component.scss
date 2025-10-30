@@ -1,0 +1,17 @@
+.modal-backdrop{
+  position: fixed;
+  inset:0;
+  background: rgba(0,0,0,0.6);
+  z-index:1000;
+}
+
+.modal-card{
+  position: fixed;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: min(760px, 96%);
+  z-index:1100;
+  padding: 1.2rem;
+  border-radius: 14px;
+}
