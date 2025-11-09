@@ -10,7 +10,7 @@
 .hero__media {
   position: absolute;
   inset: 0;
-background: url("./hero-jet.jpg") center/cover no-repeat;
+  background: url("./hero-jet.jpg") center/cover no-repeat;
 
   filter: brightness(0.55);
   transform: scale(1);
@@ -41,7 +41,7 @@ background: url("./hero-jet.jpg") center/cover no-repeat;
   font-weight: 700;
   color: gold;
   margin-bottom: 1rem;
-  animation: fadeInDown 1.5s ease;
+  animation: fadeInDown 1.5s ease forwards;
 }
 
 .subhead {
@@ -95,4 +95,122 @@ background: url("./hero-jet.jpg") center/cover no-repeat;
 @keyframes zoomIn {
   from { transform: scale(1); }
   to { transform: scale(1.1); }
+}
+
+
+
+//Luxury Transfers
+.luxury-transfers {
+  position: relative;
+  min-height: 100vh;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  background: url("./rollsroyce.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1);
+  transition: transform 8s ease-in-out;
+  animation: zoomIn 10s ease-in-out infinite alternate;
+}
+
+.luxury-transfers__overlay {
+  background: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.luxury-transfers__content {
+  text-align: center;
+  max-width: 800px;
+  animation: fadeInUp 1.5s ease;
+}
+
+.headline-secondary {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: gold;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+  animation: fadeInDown 1.5s ease forwards;
+}
+
+.subhead-secondary {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-size: 1rem;
+  min-width: 180px;
+}
+
+.card::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+input[type="date"].card,
+input[type="time"].card {
+  color-scheme: dark;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, gold, #b8860b);
+  color: black;
+  padding: 0.9rem 2rem;
+  border-radius: 40px;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+select.card {
+  background: rgba(0, 0, 0, 0.7); /* solid enough to contrast against background */
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  min-width: 180px;
+  appearance: none; /* removes default arrow style */
+}
+
+select.card option {
+  background-color: #111; /* dark background for options */
+  color: #fff; /* white text */
+}
+
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }

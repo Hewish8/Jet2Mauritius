@@ -8,7 +8,7 @@
 
         <div class="hero__actions" style="margin-top:1.25rem;">
           <button class="btn btn-primary" (click)="openQuickQuote()">Request My Quote <span style="font-size:0.9rem; opacity:0.85;">→</span></button>
-          <button class="btn btn-ghost" (click)="scrollToFleet()">Explore Fleet</button>
+          <!-- <button class="btn btn-ghost" (click)="scrollToFleet()">Explore Fleet</button> -->
         </div>
 
         <div class="hero__meta" style="margin-top:1.5rem; display:flex; gap:1.5rem; color:var(--muted);">
@@ -19,3 +19,58 @@
     </div>
   </div>
 </section>
+
+<section class="luxury-transfers" role="region" aria-label="Luxury Transfers">
+  <div class="luxury-transfers__overlay">
+    <div class="container">
+      <div class="luxury-transfers__content">
+        <h2 class="headline-secondary">Luxury Transfers Across Mauritius</h2>
+        <p class="subhead-secondary">
+          Experience sophistication from the moment you land. Chauffeured luxury vehicles to every corner of the island.
+        </p>
+
+        <form class="transfer-form" (ngSubmit)="bookTransfer()">
+          <div class="row">
+            <select class="card" [(ngModel)]="transfer.from" name="from" required>
+              <option value="" disabled selected>From</option>
+              <option>Sir Seewoosagur Ramgoolam Airport</option>
+              <option>Grand Baie</option>
+              <option>Port Louis</option>
+              <option>Tamarin</option>
+              <option>Flic en Flac</option>
+              <option>Le Morne</option>
+            </select>
+
+            <select class="card" [(ngModel)]="transfer.to" name="to" required>
+              <option value="" disabled selected>Destination</option>
+              <option>Grand Baie</option>
+              <option>Port Louis</option>
+              <option>Tamarin</option>
+              <option>Flic en Flac</option>
+              <option>Le Morne</option>
+            </select>
+          </div>
+
+          <div class="row" style="margin-top:1rem;">
+            <select class="card" [(ngModel)]="transfer.vehicle" name="vehicle" required>
+              <option value="" disabled selected>Select Vehicle</option>
+              <option>Rolls Royce Ghost</option>
+              <option>Mercedes S-Class</option>
+              <option>BMW 7 Series</option>
+              <option>Bentley Flying Spur</option>
+              <option>Range Rover Autobiography</option>
+            </select>
+
+            <input class="card" type="date" [(ngModel)]="transfer.date" name="date" [attr.min]="minDate" required />
+            <input class="card" type="time" [(ngModel)]="transfer.time" name="time" required />
+          </div>
+
+          <button class="btn btn-primary" type="submit" style="margin-top:1.5rem;">
+            Book My Transfer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+

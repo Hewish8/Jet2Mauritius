@@ -8,9 +8,7 @@
 
   <hr style="border-color: rgba(255,255,255,0.04); margin: .8rem 0;">
 
-  <form 
-
-   (ngSubmit)="next()">
+  <form (ngSubmit)="next()">
     <div *ngIf="step === 1">
       <div class="row" style="flex-wrap:wrap;">
         <input formControlName="origin" placeholder="From (city or airport code)" class="card" style="flex:1; min-width:180px;" />
@@ -22,6 +20,14 @@
           <option *ngFor="let p of [1,2,3,4,5,6,7,8,9,10]">{{p}}</option>
         </select>
         <input formControlName="contact" placeholder="Email or phone" class="card" style="flex:1; min-width:200px;" />
+      </div>
+
+      <div class="row" style="margin-top: 1.5rem; justify-content: flex-start;">
+        <label class="toggle-switch">
+          <input type="checkbox" formControlName="isReturn" />
+          <span class="slider"></span>
+          <span class="label-text">Return Flight</span>
+        </label>
       </div>
 
       <p style="margin-top:0.8rem; color:var(--muted); font-size:0.95rem;">
