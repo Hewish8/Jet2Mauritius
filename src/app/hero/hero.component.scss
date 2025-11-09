@@ -194,16 +194,6 @@ input[type="time"].card {
   transform: translateY(-2px);
 }
 
-select.card {
-  background: rgba(0, 0, 0, 0.7); /* solid enough to contrast against background */
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-  padding: 0.8rem 1rem;
-  min-width: 180px;
-  appearance: none; /* removes default arrow style */
-}
-
 select.card option {
   background-color: #111; /* dark background for options */
   color: #fff; /* white text */
