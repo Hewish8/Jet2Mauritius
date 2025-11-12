@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { FormsModule } from '@angular/forms';
 import { distinct } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-hero',
