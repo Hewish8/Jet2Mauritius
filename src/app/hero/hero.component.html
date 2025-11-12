@@ -1,32 +1,10 @@
-<section class="hero" role="region" aria-label="Hero">
-  <div class="hero__media" aria-hidden="true"></div>
-  <div class="hero__overlay">
-    <div class="container">
-      <div class="hero__content">
-        <h1 class="headline">Jet2Mauritius — Private Jets, Effortless Luxury</h1>
-        <p class="subhead">Request a bespoke quote to Mauritius. We handle the logistics — expert partners, seamless travel.</p>
-
-        <div class="hero__actions" style="margin-top:1.25rem;">
-          <button class="btn btn-primary" (click)="openQuickQuote()">Request My Quote <span style="font-size:0.9rem; opacity:0.85;">→</span></button>
-          <!-- <button class="btn btn-ghost" (click)="scrollToFleet()">Explore Fleet</button> -->
-        </div>
-
-        <div class="hero__meta" style="margin-top:1.5rem; display:flex; gap:1.5rem; color:var(--muted);">
-          <div class="meta-item">Trusted by <strong>1200+</strong> clients</div>
-          <div class="meta-item">Avg. response: <strong>15 mins</strong></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="luxury-transfers" role="region" aria-label="Luxury Transfers">
   <div class="luxury-transfers__overlay">
     <div class="container">
       <div class="luxury-transfers__content">
-        <h2 class="headline-secondary">Luxury Transfers Across Mauritius</h2>
+        <h2 class="headline-secondary">Airport Transfers Mauritius</h2>
         <p class="subhead-secondary">
-          Experience sophistication from the moment you land. Chauffeured luxury vehicles to every corner of the island.
+          Experience sophistication from the moment you land. Chauffeured vehicles to every corner of the island.
         </p>
 
         <form class="transfer-form" (ngSubmit)="bookTransfer()">
@@ -34,39 +12,44 @@
             <select class="card" [(ngModel)]="transfer.from" name="from" required>
               <option value="" disabled selected>From</option>
               <option>Sir Seewoosagur Ramgoolam Airport</option>
-              <option>Grand Baie</option>
-              <option>Port Louis</option>
-              <option>Tamarin</option>
-              <option>Flic en Flac</option>
-              <option>Le Morne</option>
+              <option>Other Location</option>
             </select>
+            <input *ngIf="transfer.from === 'Other Location'" class="card" type="text" placeholder="Enter departure location"
+              [(ngModel)]="transfer.distinctFrom" name="from" required />
+          </div>
 
+          <div class="row">
             <select class="card" [(ngModel)]="transfer.to" name="to" required>
               <option value="" disabled selected>Destination</option>
-              <option>Grand Baie</option>
-              <option>Port Louis</option>
-              <option>Tamarin</option>
-              <option>Flic en Flac</option>
-              <option>Le Morne</option>
+              <option>Sir Seewoosagur Ramgoolam Airport</option>
+              <option>Other Location</option>
             </select>
+            <input *ngIf="transfer.to === 'Other Location'" class="card" type="text" placeholder="Enter departure location"
+              [(ngModel)]="transfer.distinctTo" name="from" required />
+          </div>
+
+          <div class="row">
+            <select class="card" [(ngModel)]="transfer.vehicle" name="vehicle" required>
+              <option value="" disabled selected>Select Vehicle</option>
+              <option>Luxury</option>
+              <option>SUV</option>
+              <option>7-Seater</option>
+              <option>Van</option>
+              <option>Mini Bus</option>
+            </select>
+
+            <input placeholder="No. Passengers" [(ngModel)]="transfer.noPassengers" class="card" style="flex:1; min-width:200px;" type="number" min="1"/>
           </div>
 
           <div class="row" style="margin-top:1rem;">
-            <select class="card" [(ngModel)]="transfer.vehicle" name="vehicle" required>
-              <option value="" disabled selected>Select Vehicle</option>
-              <option>Rolls Royce Ghost</option>
-              <option>Mercedes S-Class</option>
-              <option>BMW 7 Series</option>
-              <option>Bentley Flying Spur</option>
-              <option>Range Rover Autobiography</option>
-            </select>
-
             <input class="card" type="date" [(ngModel)]="transfer.date" name="date" [attr.min]="minDate" required />
             <input class="card" type="time" [(ngModel)]="transfer.time" name="time" required />
           </div>
 
           <div class="row" style="margin-top:1rem;">
-            <input placeholder="Email or phone" class="card" style="flex:1; min-width:200px;" />
+            <input type="email" placeholder="Email" [(ngModel)]="transfer.email" class="card" style="flex:1; min-width:200px;" />
+
+            <input type="tel" placeholder="Phone" [(ngModel)]="transfer.phone" pattern="[0-9+ ]*" class="card" style="flex:1; min-width:200px;" />
           </div>
 
           <button class="btn btn-primary" type="submit" style="margin-top:1.5rem;">
@@ -78,3 +61,30 @@
   </div>
 </section>
 
+<section class="hero" role="region" aria-label="Hero">
+  <div class="hero__media" aria-hidden="true"></div>
+  <div class="hero__overlay">
+    <div class="container">
+      <div class="hero__content">
+        <h1 class="headline">Jet2Mauritius — Private Jets, Effortless Luxury</h1>
+        <p class="subhead">Request a bespoke quote to Mauritius. We handle the logistics — expert partners, seamless travel.</p>
+
+        <div class="hero__actions" style="margin-top:1.25rem;">
+          <button class="btn btn-primary" (click)="openQuickQuote()">Request My Quote <span style="font-size:0.9rem; opacity:0.85;">→</span></button>
+        </div>
+
+        <div class="hero__meta" style="margin-top:1.5rem; display:flex; gap:1.5rem; color:var(--muted);">
+          <div class="meta-item">Trusted by <strong>1200+</strong> clients</div>
+          <div class="meta-item">Avg. response: <strong>15 mins</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✨ Luxurious blur overlay -->
+  <div class="hero__blur">
+    <div class="blur-content">
+      <span>✈️ Private Jet Service in Progress</span>
+    </div>
+  </div>
+</section>

@@ -97,7 +97,43 @@
   to { transform: scale(1.1); }
 }
 
+// Private Jet Blur
+.hero {
+  position: relative;
+  overflow: hidden;
+}
 
+.hero__blur {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(2px) brightness(0.7);
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  color: #fff;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  opacity: 0;
+  animation: fadeInLux 1.5s ease forwards;
+}
+
+.blur-content span {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+@keyframes fadeInLux {
+  to {
+    opacity: 1;
+  }
+}
 
 //Luxury Transfers
 .luxury-transfers {

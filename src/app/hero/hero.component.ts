@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
 import { gsap } from 'gsap';
 import { FormsModule } from '@angular/forms';
+import { distinct } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-hero',
@@ -13,14 +16,20 @@ import { FormsModule } from '@angular/forms';
 export class HeroComponent implements AfterViewInit {
   transfer = {
     from: '',
+    distinctFrom: '',
     to: '',
+    distinctTo: '',
     vehicle: '',
+    noPassengers: '',
     date: '',
     time: '',
+    email: '',
+    phone: '',
   };
   today = new Date();
   minDate: string = '';
 
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     const yyyy = this.today.getFullYear();
@@ -55,9 +64,40 @@ export class HeroComponent implements AfterViewInit {
   }
 
   bookTransfer() {
-    console.log('Luxury transfer booking:', this.transfer);
-    alert(
-      `Thank you! We’ll confirm your ${this.transfer.vehicle} transfer shortly.`
-    );
+    this.sendTransfer();
   }
+
+  sendTransfer() {
+    const data = {
+      access_key: environment.web3FormsKey, // replace with your Web3Forms key
+      subject: '🚗 New Transfer Request',
+      message: `
+        Dear Admin,
+
+        A new private transfer booking request has been received.
+
+        From: ${this.transfer.from} ${this.transfer.distinctFrom ? '(' + this.transfer.distinctFrom + ')' : ''}
+        To: ${this.transfer.to} ${this.transfer.distinctTo ? '(' + this.transfer.distinctTo + ')' : ''}
+        Vehicle: ${this.transfer.vehicle}
+        Number of Passengers: ${this.transfer.noPassengers}
+        Date: ${this.transfer.date}
+        Time: ${this.transfer.time}
+
+        Contact Details:
+        Email: ${this.transfer.email}
+        Phone: ${this.transfer.phone}
+
+        Please follow up with the client to confirm the booking.
+
+        Warm regards,
+        Your Travel Website ✈️
+            `,
+    };
+
+    this.http.post('https://api.web3forms.com/submit', data).subscribe({
+      next: () => alert('✅ Transfer request sent successfully!'),
+      error: (err) => alert('❌ Error sending request: ' + err.message),
+    });
+  }
+
 }
