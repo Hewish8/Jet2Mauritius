@@ -9,13 +9,16 @@
 
         <form class="transfer-form" (ngSubmit)="bookTransfer()">
           <div class="row">
+            <input class="card" type="text" placeholder="Full Name" [(ngModel)]="transfer.fullName" name="fullName" required />
+          </div>
+          <div class="row">
             <select class="card" [(ngModel)]="transfer.from" name="from" required>
               <option value="" disabled selected>From</option>
               <option>Sir Seewoosagur Ramgoolam Airport</option>
               <option>Other Location</option>
             </select>
             <input *ngIf="transfer.from === 'Other Location'" class="card" type="text" placeholder="Enter departure location"
-              [(ngModel)]="transfer.distinctFrom" name="from" required />
+              [(ngModel)]="transfer.distinctFrom" name="distinctFrom" required />
           </div>
 
           <div class="row">
@@ -24,13 +27,14 @@
               <option>Sir Seewoosagur Ramgoolam Airport</option>
               <option>Other Location</option>
             </select>
-            <input *ngIf="transfer.to === 'Other Location'" class="card" type="text" placeholder="Enter departure location"
-              [(ngModel)]="transfer.distinctTo" name="from" required />
+            <input *ngIf="transfer.to === 'Other Location'" class="card" type="text" placeholder="Enter destination"
+              [(ngModel)]="transfer.distinctTo" name="distinctTo" required />
           </div>
 
           <div class="row">
             <select class="card" [(ngModel)]="transfer.vehicle" name="vehicle" required>
               <option value="" disabled selected>Select Vehicle</option>
+              <option>Sedan</option>
               <option>Luxury</option>
               <option>SUV</option>
               <option>7-Seater</option>

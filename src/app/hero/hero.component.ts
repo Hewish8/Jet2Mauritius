@@ -15,6 +15,7 @@ import { environment } from '../../environments/environment';
 })
 export class HeroComponent implements AfterViewInit {
   transfer = {
+    fullName: '',
     from: '',
     distinctFrom: '',
     to: '',
@@ -64,10 +65,11 @@ export class HeroComponent implements AfterViewInit {
   }
 
   bookTransfer() {
-    this.sendTransfer();
+    this.sendTransferRequest();
+    this.sendTransferAcknowledgement();
   }
 
-  sendTransfer() {
+  sendTransferRequest() {
     const data = {
       access_key: environment.web3FormsKey, // replace with your Web3Forms key
       subject: '🚗 New Transfer Request',
@@ -90,14 +92,33 @@ export class HeroComponent implements AfterViewInit {
         Please follow up with the client to confirm the booking.
 
         Warm regards,
-        Your Travel Website ✈️
+        Jet2Mauritius ✈️
             `,
     };
 
     this.http.post('https://api.web3forms.com/submit', data).subscribe({
-      next: () => alert('✅ Transfer request sent successfully!'),
+      next: () => {
+        alert('✅ Transfer request sent successfully!'),
+        this.transfer = {
+            fullName: '',
+            from: '',
+            distinctFrom: '',
+            to: '',
+            distinctTo: '',
+            vehicle: '',
+            noPassengers: '',
+            date: '',
+            time: '',
+            email: '',
+            phone: '',
+          };
+      },
       error: (err) => alert('❌ Error sending request: ' + err.message),
     });
+  }
+
+    sendTransferAcknowledgement() {
+
   }
 
 }
